@@ -1,11 +1,12 @@
-package com.demo.newsapp
+package com.demo.newsapp.featureNews.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.demo.newsapp.R
 
-class MainActivity : AppCompatActivity() {
+class NewsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_news)
     }
 }
