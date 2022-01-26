@@ -1,0 +1,84 @@
+ext {
+    // region Version
+    app_compat_version = "1.4.1"
+    material_version = "1.5.0"
+    constraint_layout_version = "2.1.3"
+    kotlin_version = '1.5.31'
+
+    // Dagger
+    dagger_version = "2.38.1"
+
+    // KTX
+    core_ktx_version = "1.7.0"
+    fragment_ktx_version = "1.3.6"
+
+    // Room
+    room_version = "2.3.0"
+
+    // RxJava
+    rxjava_version = "2.2.13"
+    rxandroid_version = "2.1.1"
+
+    // Network
+    retrofit_version = "2.9.0"
+    okhttp_version = "4.9.1"
+    gson_version = "2.8.6"
+
+    // Testing
+    junit_version = "4.13.2"
+    core_testing_version = "2.1.0"
+
+    // Mockito
+    mockito_version = "2.1.0"
+    mockito_inline_version = "3.11.2"
+
+    threeten_version = "1.3.1"
+    // endregion
+
+    // region Dependencies
+    commonLibraries = [
+            appCompat               : "androidx.appcompat:appcompat:$app_compat_version",
+            materialDesignComponent : "com.google.android.material:material:$material_version",
+            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
+            kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    ]
+
+    daggerLibraries = [
+            dagger          : "com.google.dagger:dagger:$dagger_version",
+            daggerCompiler  : "com.google.dagger:dagger-compiler:$dagger_version"
+    ]
+
+    ktxLibraries = [
+            coreKtx     : "androidx.core:core-ktx:$core_ktx_version",
+            fragmentKtx : "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+    ]
+
+    roomLibraries = [
+            room            : "androidx.room:room-ktx:$room_version",
+            roomCompiler    : "androidx.room:room-compiler:$room_version"
+    ]
+
+    rxLibraries = [
+            rxJava2     : "io.reactivex.rxjava2:rxjava:$rxjava_version",
+            rxAndroid2  : "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    ]
+
+    networkLibraries = [
+            retrofit        : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitGson    : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            retrofitRx      : "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version",
+            okHttp          : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            okHttpLogging   : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+            gson            : "com.google.code.gson:gson:$gson_version"
+    ]
+
+    testingLibraries = [
+            junit   : "junit:junit:$junit_version",
+            archCore : "androidx.arch.core:core-testing:$core_testing_version",
+            mockitoKotlin : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version",
+            mockitoInline : "org.mockito:mockito-inline:$mockito_inline_version"
+    ]
+
+    threeten = "com.jakewharton.threetenabp:threetenabp:$threeten_version"
+    // endregion
+}

@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
+
+apply from: "dependency.gradle"
 
 android {
     compileSdk 32
@@ -16,6 +19,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -32,12 +38,44 @@ android {
 }
 
 dependencies {
+    implementation commonLibraries.appCompat
+    implementation commonLibraries.materialDesignComponent
+    implementation commonLibraries.constraintLayout
+    implementation commonLibraries.kotlinStdlib
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Dagger
+    implementation daggerLibraries.dagger
+    kapt daggerLibraries.daggerCompiler
+
+    // KTX
+    implementation ktxLibraries.coreKtx
+    implementation ktxLibraries.fragmentKtx
+
+    // Room
+    implementation roomLibraries.room
+    kapt roomLibraries.roomCompiler
+
+    // RxJava
+    implementation rxLibraries.rxJava2
+    implementation rxLibraries.rxAndroid2
+
+    // Retrofit, OkHttp, Gson
+    implementation networkLibraries.retrofit
+    implementation networkLibraries.retrofitGson
+    implementation networkLibraries.retrofitRx
+    implementation networkLibraries.okHttp
+    implementation networkLibraries.okHttpLogging
+    implementation networkLibraries.gson
+
+    // Testing
+    testImplementation testingLibraries.junit
+    testImplementation testingLibraries.archCore
+
+    // Mockito
+    testImplementation(testingLibraries.mockitoKotlin) {
+        exclude group: "org.mockito"
+    }
+    testImplementation testingLibraries.mockitoInline
+
+    implementation threeten
 }
