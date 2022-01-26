@@ -10,5 +10,9 @@ import com.demo.newsapp.featureNews.domain.model.News
 )
 abstract class NewsDatabase: RoomDatabase() {
 
-    abstract class newsDao: NewsDao
+    companion object {
+        internal const val DATABASE_NAME = "carousell_news.db"
+    }
+
+    abstract val newsDao: NewsDao
 }
