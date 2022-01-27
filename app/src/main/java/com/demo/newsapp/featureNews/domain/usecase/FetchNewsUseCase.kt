@@ -4,13 +4,13 @@ import com.demo.newsapp.featureNews.domain.repository.NewsRepository
 import io.reactivex.Completable
 
 interface FetchNewsUseCase {
-    fun invoke(): Completable
+    fun execute(): Completable
 }
 
 class FetchNewsUseCaseImpl(
     val repository: NewsRepository
 ): FetchNewsUseCase {
-    override fun invoke(): Completable {
+    override fun execute(): Completable {
         return repository.fetchNews()
     }
 }

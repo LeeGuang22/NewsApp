@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_radius">8dp</dimen>
+
+    <dimen name="padding_10">10dp</dimen>
+
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_14">14dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_28">28dp</dimen>
+
+    <dimen name="font_12sp">12sp</dimen>
+    <dimen name="font_16sp">16sp</dimen>
+</resources>

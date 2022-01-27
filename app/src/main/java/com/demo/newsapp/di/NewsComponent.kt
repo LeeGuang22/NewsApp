@@ -5,6 +5,8 @@ import dagger.Component
 import javax.inject.Scope
 
 @Component(modules = [NewsModule::class])
+
+@NewsScope
 interface NewsComponent {
     fun inject(newsActivity: NewsActivity)
 }

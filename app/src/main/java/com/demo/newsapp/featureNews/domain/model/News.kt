@@ -3,6 +3,7 @@ package com.demo.newsapp.featureNews.domain.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "news")
 data class News(
@@ -15,10 +16,12 @@ data class News(
     @ColumnInfo(name = "description")
     val description: String,
 
-    @ColumnInfo(name = "banner_url")
+    @ColumnInfo
+    @SerializedName("banner_url")
     val bannerUrl: String,
 
-    @ColumnInfo(name = "time_created")
+    @ColumnInfo
+    @SerializedName("time_created")
     val timeCreated: Long,
 
     @ColumnInfo(name = "rank")

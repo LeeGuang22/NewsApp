@@ -41,7 +41,6 @@ dependencies {
     implementation commonLibraries.appCompat
     implementation commonLibraries.materialDesignComponent
     implementation commonLibraries.constraintLayout
-    implementation commonLibraries.kotlinStdlib
 
     // Dagger
     implementation daggerLibraries.dagger
@@ -49,7 +48,7 @@ dependencies {
 
     // KTX
     implementation ktxLibraries.coreKtx
-    implementation ktxLibraries.fragmentKtx
+    implementation ktxLibraries.activityKtx
 
     // Room
     implementation roomLibraries.room
@@ -67,6 +66,10 @@ dependencies {
     implementation networkLibraries.okHttp
     implementation networkLibraries.okHttpLogging
     implementation networkLibraries.gson
+
+    // Glide
+    implementation glideLibraries.glide
+    kapt glideLibraries.glideCompiler
 
     // Testing
     testImplementation testingLibraries.junit
