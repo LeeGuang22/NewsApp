@@ -23,10 +23,6 @@ class NewsViewModelImpl(
     private val getNewsUseCase: GetNewsUseCase
 ) : NewsViewModel, ViewModel() {
 
-    init {
-        fetchNews()
-    }
-
     override fun fetchNews(): Completable {
         return fetchNewsUseCase.execute()
             .subscribeOn(Schedulers.io())
@@ -42,7 +38,7 @@ class NewsViewModelImpl(
 
     override fun getNewsByRank(): Single<List<News>> {
         return getNewsUseCase.execute()
-            .map { it.sortedWith(compareBy({it.rank}, {it.timeCreated})) }
+            .map { it.sortedWith(compareBy({ it.rank }, { it.timeCreated })) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
