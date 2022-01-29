@@ -2,13 +2,14 @@ package com.demo.newsapp.featureNews.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.demo.newsapp.R
 import com.demo.newsapp.databinding.AdapterItemNewsBinding
 import com.demo.newsapp.featureNews.domain.model.News
-import com.demo.newsapp.featureNews.domain.util.convertTime
+import com.demo.newsapp.featureNews.domain.util.toStringFormat
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -29,7 +30,7 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return items.size
     }
 
-    fun updateNews(news: List<News>) {
+    internal fun updateNews(news: List<News>) {
         items = news
         notifyDataSetChanged()
     }
@@ -37,19 +38,23 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class NewsViewHolder(val binding: AdapterItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(position: Int) {
+        internal fun bindView(position: Int) {
             binding.run {
-                Glide.with(itemView.context)
-                    .load(items[position]
-                    .bannerUrl)
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .error(R.drawable.ic_launcher_foreground)
-                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .into(ivBanner)
-                tvTitle.text = items[position].title
-                tvDescription.text = items[position].description
-                tvCreatedDate.text = convertTime(items[position].timeCreated)
+                val item = items[position]
+                bindImageView(item, ivBanner)
+                tvTitle.text = item.title
+                tvDescription.text = item.description
+                tvCreatedDate.text = item.timeCreated.toStringFormat()
             }
+        }
+
+        private fun bindImageView(item: News, ivBanner: ImageView) {
+            Glide.with(itemView.context)
+                .load(item.bannerUrl)
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(ivBanner)
         }
     }
 }

@@ -5,16 +5,10 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.Period
 import org.threeten.bp.ZoneId
 
-/**
- * Convert timeCreated to time ago
- *
- * @param timeCreated Long
- * @return String of formatted value
- */
-fun convertTime(timeCreated: Long): String {
+fun Long.toStringFormat(): String {
     val period = Period.between(
-        Instant.ofEpochSecond(timeCreated).atZone(ZoneId.systemDefault()).toLocalDate(),
+        Instant.ofEpochSecond(this).atZone(ZoneId.systemDefault()).toLocalDate(),
         LocalDate.now()
     )
-    return format(period)
+    return formatToString(period)
 }
