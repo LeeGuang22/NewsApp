@@ -74,6 +74,9 @@ dependencies {
     // Testing
     testImplementation testingLibraries.junit
     testImplementation testingLibraries.archCore
+    testImplementation ('org.threeten:threetenbp:1.3.2'){
+        exclude group:'com.jakewharton.threetenabp', module:'threetenabp'
+    }
 
     // Mockito
     testImplementation(testingLibraries.mockitoKotlin) {
