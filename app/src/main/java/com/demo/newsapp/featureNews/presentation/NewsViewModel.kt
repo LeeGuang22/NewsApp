@@ -31,14 +31,18 @@ class NewsViewModelImpl(
 
     override fun getNewsByTimeCreated(): Single<List<News>> {
         return getNewsUseCase.execute()
-            .map { it.sortedBy { it.timeCreated } }
+            .map { it.sortedByDescending { it.timeCreated } }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun getNewsByRank(): Single<List<News>> {
         return getNewsUseCase.execute()
-            .map { it.sortedWith(compareBy({ it.rank }, { it.timeCreated })) }
+            .map {
+                it.sortedWith(
+                    compareBy(News::rank)
+                        .thenByDescending { it.timeCreated })
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
